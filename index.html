@@ -849,10 +849,22 @@
                 var fincaValue = this.value;
                 
                 // Lógica condicional para determinar el tamaño del lote
-                if (fincaValue >= "FF-01" && fincaValue <= "FF-47") {
+                if (fincaValue = "FF-01"){
+                    txtlote.Value = "110 m2"
+                }else if (fincaValue >= "FF-02" && fincaValue <= "FF-07") {
+                    txtlote.value = "119 m2";
+                }else if (fincaValue >= "FF-08" && fincaValue <= "FF-10") {
+                    txtlote.value = "110 m2";
+                } else if (fincaValue >= "FF-11" && fincaValue <= "FF-15") {
+                    txtlote.value = "119 m2";
+                } else if (fincaValue >= "FF-16") {
+                    txtlote.value = "110 m2";
+                } else if (fincaValue >= "FF-17" && fincaValue <= "FF-32") {
+                    txtlote.value = "112 m2";
+                } else if (fincaValue >= "FF-33" && fincaValue <= "FF-47") {
                     txtlote.value = "110 m2";
                 } else if (fincaValue >= "FF-48" && fincaValue <= "FF-64") {
-                    txtlote.value = "112 m2";
+                    txtlote.value = "110 m2";
                 } else if (fincaValue === "FF-65") {
                     txtlote.value = "150 m2";
                 } else {
