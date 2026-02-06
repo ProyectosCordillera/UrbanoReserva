@@ -848,25 +848,34 @@
             ddlcasaNumero.addEventListener('change', function() {
                 var fincaValue = this.value;
                 
-                // Lógica condicional para determinar el tamaño del lote
-                if (fincaValue = "FF-01"){
-                    txtlote.Value = "110 m2"
-                }else if (fincaValue >= "FF-02" && fincaValue <= "FF-07") {
-                    txtlote.value = "119 m2";
-                }else if (fincaValue >= "FF-08" && fincaValue <= "FF-10") {
-                    txtlote.value = "110 m2";
-                } else if (fincaValue >= "FF-11" && fincaValue <= "FF-15") {
-                    txtlote.value = "119 m2";
-                } else if (fincaValue >= "FF-16") {
-                    txtlote.value = "110 m2";
-                } else if (fincaValue >= "FF-17" && fincaValue <= "FF-32") {
-                    txtlote.value = "112 m2";
-                } else if (fincaValue >= "FF-33" && fincaValue <= "FF-47") {
-                    txtlote.value = "110 m2";
-                } else if (fincaValue >= "FF-48" && fincaValue <= "FF-64") {
-                    txtlote.value = "110 m2";
-                } else if (fincaValue === "FF-65") {
-                    txtlote.value = "150 m2";
+                // Extraer el número del formato "FF-XX"
+                var numeroFinca = parseInt(fincaValue.replace('FF-', ''), 10);
+                
+                // Validar que sea un número válido
+                if (isNaN(numeroFinca)) {
+                    txtlote.value = "";
+                    return;
+                }
+                
+                // Lógica condicional CORREGIDA usando comparaciones numéricas
+                if (numeroFinca === 1) {
+                    txtlote.value = "110 m²";
+                } else if (numeroFinca >= 2 && numeroFinca <= 7) {
+                    txtlote.value = "119 m²";
+                } else if (numeroFinca >= 8 && numeroFinca <= 10) {
+                    txtlote.value = "110 m²";
+                } else if (numeroFinca >= 11 && numeroFinca <= 15) {
+                    txtlote.value = "119 m²";
+                } else if (numeroFinca >= 16 && numeroFinca <= 16) {
+                    txtlote.value = "110 m²";
+                } else if (numeroFinca >= 17 && numeroFinca <= 32) {
+                    txtlote.value = "112 m²";
+                } else if (numeroFinca >= 33 && numeroFinca <= 47) {
+                    txtlote.value = "110 m²";
+                } else if (numeroFinca >= 48 && numeroFinca <= 64) {
+                    txtlote.value = "110 m²";
+                } else if (numeroFinca === 65) {
+                    txtlote.value = "150 m²";
                 } else {
                     txtlote.value = "";
                 }
