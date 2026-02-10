@@ -899,40 +899,25 @@
             }
         });
         
-        // Funciones para navegación entre campos de dirección
-        function moveToNext(currentInput, event) {
-            const nextInput = document.getElementById('txtDireccion2');
-            
-            // Si se presiona espacio o si el texto llega al final
-            if (event.key === ' ' || currentInput.value.length >= currentInput.maxLength) {
-                // Prevenir el comportamiento por defecto del espacio
-                if (event.key === ' ') {
-                    event.preventDefault();
-                }
-                
-                // Mover el foco al siguiente input
-                nextInput.focus();
-                
-                // Si fue por espacio, agregar el espacio al siguiente input
-                if (event.key === ' ') {
-                    nextInput.value = ' ' + nextInput.value;
-                    nextInput.selectionStart = 1;
-                    nextInput.selectionEnd = 1;
-                }
-            }
-        }
+       // Funciones para navegación entre campos de dirección
+function moveToNext(currentInput, event) {
+    const nextInput = document.getElementById('txtDireccion2');
+    // Solo saltar al siguiente campo cuando se alcanza el máximo de caracteres
+    if (currentInput.value.length >= currentInput.maxLength) {
+        nextInput.focus();
+    }
+}
 
-        function moveToPrevious(currentInput, event) {
-            const prevInput = document.getElementById('txtDireccion');
-            
-            // Si se presiona Backspace al inicio del segundo input
-            if (event.key === 'Backspace' && currentInput.selectionStart === 0) {
-                event.preventDefault();
-                prevInput.focus();
-                prevInput.selectionStart = prevInput.value.length;
-                prevInput.selectionEnd = prevInput.value.length;
-            }
-        }
+function moveToPrevious(currentInput, event) {
+    const prevInput = document.getElementById('txtDireccion');
+    // Si se presiona Backspace al inicio del segundo input
+    if (event.key === 'Backspace' && currentInput.selectionStart === 0 && currentInput.value === '') {
+        event.preventDefault();
+        prevInput.focus();
+        prevInput.selectionStart = prevInput.value.length;
+        prevInput.selectionEnd = prevInput.value.length;
+    }
+}
         
         // Función para limpiar el formulario
         function resetForm() {
