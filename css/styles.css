@@ -159,7 +159,7 @@ body {
 .underlineId { width: 120px; min-width: 120px; }
 .underlinetel1 { width: 120px; min-width: 120px; }
 .underlinetel2 { width: 120px; min-width: 120px; }
-.underlineNombre { width: 390px; min-width: 390px; }
+.underlineNombre { width: 320px; min-width: 320px; }
 .underline-direcionbanco { width: 430px; min-width: 430px; }
 .underlineMontoLetras { width: 330px; min-width: 330px; }
 .underlineMontos { width: 120px; min-width: 120px; text-align: right; font-family: monospace; }
