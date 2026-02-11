@@ -158,8 +158,8 @@ body {
 .underlineId { width: 120px; min-width: 120px; }
 .underlinetel1 { width: 120px; min-width: 120px; }
 .underlinetel2 { width: 120px; min-width: 120px; }
-.underlineNombre { width: 390px; min-width: 390px; }
-.underline-direcionbanco { width: 450px; min-width: 450px; }
+.underlineNombre { width: 400px; min-width: 400px; }
+.underline-direcionbanco { width: 430px; min-width: 430px; }
 .underlineMontoLetras { width: 330px; min-width: 330px; }
 .underlineMontos { width: 120px; min-width: 120px; text-align: right; font-family: monospace; }
 .underlineNacionalidad { width: 250px; min-width: 250px; }
