@@ -155,6 +155,7 @@ body {
 
 /* Anchos específicos */
 .underlineNumcuota { width: 40px; min-width: 40px; }
+.underlineNumCasa { width: 40px; min-width: 40px; }
 .underline-lote { width: 80px; min-width: 80px; }
 .underline-tipocasa { width: 80px; min-width: 80px; font-weight: bold; }
 .underlineId { width: 120px; min-width: 120px; }
