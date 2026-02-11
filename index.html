@@ -21,17 +21,36 @@
 </head>
 <body>
     <!-- Botones de acción -->
-    <div class="no-print action-buttons">
-        <button class="btn-action btn-print" onclick="window.print()">
-            <span>🖨️</span> Imprimir
-        </button>
-        <button class="btn-action btn-save" onclick="saveAsPDF()">
-            <span>💾</span> Descargar PDF
-        </button>
-        <button class="btn-action btn-reset" onclick="resetForm()">
-            <span>↺</span> Limpiar Formulario
-        </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark no-print">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">SUNDARA</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSundara">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSundara">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#Hoja1">Recibo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#pagina2">Pagos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#pagina3">Firmas</a>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-light btn-sm" onclick="window.print()">🖨️ Imprimir</button>
+        <button class="btn btn-outline-success btn-sm" onclick="saveAsPDF()">💾 PDF</button>
+        <button class="btn btn-outline-warning btn-sm" onclick="resetForm()">↺ Limpiar</button>
+      </div>
     </div>
+  </div>
+</nav>
+  <!-- final del navbar  -->
 
     <!-- Contenido principal -->
     <div id="Hoja1" class="container py-3">
