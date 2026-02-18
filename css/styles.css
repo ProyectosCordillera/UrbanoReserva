@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     padding: 10px;
     line-height: 1.4;
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     background-color: #f8f9fa;
     padding-bottom: 60px;
 }
@@ -13,12 +13,11 @@ body {
     padding-left: 0;
 }
 
-
-/* Este es el contenedor principal que debes modificar */
+/* Este es el contenedor principal */
 #Hoja1.container {
-    width: 200mm; /* Cambia de 8.5in a 200mm (aprox. 7.87 pulgadas) */
+    width: 200mm; 
     min-height: 11in;
-    max-width: 200mm; /* También cambia max-width */
+    max-width: 200mm; 
     margin: 20px auto;
     padding: 0.5in;
     border-radius: 5px;
@@ -30,7 +29,7 @@ body {
 
 /* ------------------ Texto y párrafos ------------------ */
 .Cuerp1 {
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     text-align: justify;
     line-height: 1.5;
     color: #333;
@@ -50,7 +49,7 @@ body {
 .dropdown-custom-Casa,
 .dropdown-Tipo-casa {
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     font-weight: bold;
     display: inline-block;
     border: none;
@@ -130,7 +129,7 @@ body {
 .underlineMontos {
     display: inline-block;
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     font-weight: normal;
     text-decoration: none;
     border: none;
@@ -191,7 +190,7 @@ body {
 .two-column-table {
     width: 100%;
     table-layout: fixed;
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -217,7 +216,7 @@ body {
 }
 
 .date-input {
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     width: 90px;
     border: none;
     border-bottom: 1px solid #000;
@@ -256,14 +255,14 @@ body {
 
 .signature-name {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12pt; /* Cambiado a 12pt */
     margin-bottom: 3px;
     text-align: center;
     width: 100%;
 }
 
 .signature-info {
-    font-size: 12px;
+    font-size: 10pt;
     color: #555;
     line-height: 1.2;
     text-align: center;
@@ -295,7 +294,8 @@ body {
 /* ------------------ Estilos de impresión ------------------ */
 @media print {
     @page {
-        margin: 0;
+        /* ✅ MÁRGENES AJUSTADOS A 1.5 CM */
+        margin: 1.5cm; 
         size: auto;
     }
     
@@ -303,6 +303,7 @@ body {
         padding: 0;
         margin: 0;
         background-color: white;
+        font-size: 12pt;
     }
     
     .chbAplica {
@@ -310,10 +311,13 @@ body {
     }
     
     #Hoja1.container {
-         box-shadow: none;
+        box-shadow: none;
         max-width: 100%;
-        padding: 5mm 5mm 5mm 5mm !important;
-        min-height: 279.4mm !important;
+        /* ✅ Padding reducido para no duplicar márgenes con @page */
+        padding: 0 !important; 
+        min-height: auto !important;
+        margin: 0 !important;
+        width: 100% !important;
     }
     
     .signature-section { margin: 20px 0 15px 0; }
@@ -331,11 +335,19 @@ body {
     .signature-section { page-break-inside: avoid; }
     
     /* Margen superior en página 2 */
-    #pagina2 { padding-top: 2cm; }
+    #pagina2 { padding-top: 1cm; }
     
     /* Hide non-essential elements for print */
     .no-print {
         display: none !important;
+    }
+    
+    /* Asegurar que los inputs se vean limpios al imprimir */
+    input, select {
+        border: none !important;
+        border-bottom: 1px solid #000 !important;
+        background: transparent !important;
+        -webkit-print-color-adjust: exact;
     }
 }
 
