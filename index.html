@@ -18,60 +18,6 @@
     
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- ✅ NUEVOS ESTILOS PARA IMPRESIÓN Y FUENTES -->
-    <style>
-        /* 1. FORZAR FUENTE ARIAL TAMAÑO 12 EN TODOS LOS INPUTS */
-        input, select, textarea {
-            font-family: 'Arial', sans-serif !important;
-            font-size: 12pt !important;
-            border: none; /* Opcional: Quita el borde azul por defecto del navegador */
-            border-bottom: 1px solid #000; /* Opcional: Mantiene solo la línea inferior si usas estilo subrayado */
-            background: transparent;
-            padding: 0 5px;
-        }
-
-        /* Asegurar que los selects se vean bien */
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            cursor: pointer;
-        }
-
-        /* 2. AJUSTAR MÁRGENES DE IMPRESIÓN A 1.5 CM */
-        @media print {
-            @page {
-                margin: 1.5cm; /* Margen superior, derecho, inferior, izquierdo */
-                size: letter portrait;
-            }
-            
-            body {
-                margin: 0;
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-            }
-
-            /* Ocultar elementos de navegación y botones */
-            .no-print, nav, footer, button {
-                display: none !important;
-            }
-
-            /* Asegurar que el contenedor ocupe el ancho disponible sin padding extra */
-            .container {
-                max-width: 100% !important;
-                width: 100% !important;
-                padding: 0;
-            }
-
-            /* Ajuste para saltos de página */
-            .page-break {
-                page-break-before: always;
-                display: block;
-                height: 1px; /* Para evitar colapsos */
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Botones de navbar  -->
