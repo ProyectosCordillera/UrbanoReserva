@@ -343,7 +343,7 @@ body {
     .signature-section { page-break-inside: avoid; }
     
     /* Margen superior en página 2 */
-    #pagina2 { padding-top: 1cm; }
+    #pagina2 { padding-top: 0.3cm; }
     
     /* Hide non-essential elements for print */
     .no-print {
