@@ -19,7 +19,7 @@ function saveAsPDF(event) {
         const element = document.getElementById('Hoja1');
 
         const opt = {
-            margin: [5, 2, 5, 2],
+            margin: [3, 2, 3, 2],
             filename: 'recibo-reserva.pdf',
             image: {
                 type: 'jpeg',
