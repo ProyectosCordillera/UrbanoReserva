@@ -111,7 +111,6 @@ body {
 
 /* ------------------ Campos de texto con subrayado ------------------ */
 .underline,
-.underlineCuentaCliente,
 .underlineNumCasa,
 .underline-lote,
 .underlineId,
@@ -127,7 +126,8 @@ body {
 .underlineOficio,
 .underline-direcionbanco,
 .underlineNombre,
-.underlineMontos {
+.underlineMontos,
+.underlineCuentaCliente{
     display: inline-block;
     font-family: Arial, sans-serif;
     font-size: 12pt; /* Cambiado a 12pt */
