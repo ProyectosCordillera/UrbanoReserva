@@ -19,8 +19,7 @@ function saveAsPDF(event) {
         const element = document.getElementById('Hoja1');
 
         const opt = {
-            // ✅ MÁRGENES AJUSTADOS A 1.5CM (15mm)
-            // Formato: [superior, derecho, inferior, izquierdo] en mm
+            // ✅ MÁRGENES AJUSTADOS [superior, derecho, inferior, izquierdo] en mm
             margin: [10, 10, 10, 10],
             
             filename: 'recibo-reserva.pdf',
@@ -31,13 +30,13 @@ function saveAsPDF(event) {
             },
             
             html2canvas: {
-                scale: 2,  // ✅ Aumentado para mejor calidad
+                scale: 2,
                 useCORS: true,
                 logging: false,
                 letterRendering: true,
                 allowTaint: false,
                 scrollY: 0,
-                windowWidth: 800  // ✅ Ancho fijo para consistencia
+                windowWidth: 800
             },
             
             jsPDF: {
@@ -49,28 +48,17 @@ function saveAsPDF(event) {
             // ✅ CONFIGURACIÓN DE SALTOS DE PÁGINA
             pagebreak: {
                 mode: ['css'],
-                before: ['.page-break'],      // ✅ Salta antes de .page-break
-                after: [],                     // ✅ Evita saltos después
-                avoid: ['.signature-section']  // ✅ Evita cortar firmas
+                before: ['.page-break'],
+                after: [],
+                avoid: ['.signature-section']
             }
         };
 
+        // ✅ CADENA DE PROMESAS CORREGIDA
         html2pdf()
             .set(opt)
             .from(element)
-            .toPdf()
-            .get('pdf')
-            .then(function(pdf) {
-                // ✅ Eliminar páginas en blanco al final
-                const totalPages = pdf.internal.getNumberOfPages();
-                for (let i = totalPages; i > 0; i--) {
-                    const page = pdf.internal.pages[i];
-                    if (page === undefined || page.trim() === '') {
-                        pdf.deletePage(i);
-                    }
-                }
-            })
-            .save()
+            .save()  // ✅ .save() directo, sin toPdf().get('pdf')
             .then(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
