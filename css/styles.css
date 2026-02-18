@@ -129,8 +129,7 @@ body {
 .underlineMontos,
 .underlineCuentaCliente,
 .underlineCorreo1,
-.underlineCorreo2
-{
+.underlineCorreo2{
     display: inline-block;
     font-family: Arial, sans-serif;
     font-size: 12pt; /* Cambiado a 12pt */
