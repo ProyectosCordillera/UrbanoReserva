@@ -347,7 +347,7 @@ body {
     }
     
     #pagina3 { 
-        padding-top: 0.3cm !important; /* ✅ Página 3 (NUEVO) */
+        padding-top: 0.1cm !important; /* ✅ Página 3 (NUEVO) */
     }
     
     /* Hide non-essential elements for print */
