@@ -172,7 +172,7 @@ body {
 .underlineOficio { width: 120px; min-width: 120px; }
 .underlineddl { width: 30px; min-width: 30px; max-width: 40px; text-align: center; letter-spacing: 1px; font-weight: bold; }
 .underlineP { width: 300px; min-width: 300px; }
-.underlineCuentaCliente { width: 180px; min-width: 180px; }
+.underlineCuentaCliente { width: 190px; min-width: 190px; }
 
 /* ------------------ Radios ------------------ */
 .radio-custom {
