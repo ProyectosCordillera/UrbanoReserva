@@ -18,35 +18,83 @@
     
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ✅ NUEVOS ESTILOS PARA IMPRESIÓN Y FUENTES -->
+    <style>
+        /* 1. FORZAR FUENTE ARIAL TAMAÑO 12 EN TODOS LOS INPUTS */
+        input, select, textarea {
+            font-family: 'Arial', sans-serif !important;
+            font-size: 12pt !important;
+            border: none; /* Opcional: Quita el borde azul por defecto del navegador */
+            border-bottom: 1px solid #000; /* Opcional: Mantiene solo la línea inferior si usas estilo subrayado */
+            background: transparent;
+            padding: 0 5px;
+        }
+
+        /* Asegurar que los selects se vean bien */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        /* 2. AJUSTAR MÁRGENES DE IMPRESIÓN A 1.5 CM */
+        @media print {
+            @page {
+                margin: 1.5cm; /* Margen superior, derecho, inferior, izquierdo */
+                size: letter portrait;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+            }
+
+            /* Ocultar elementos de navegación y botones */
+            .no-print, nav, footer, button {
+                display: none !important;
+            }
+
+            /* Asegurar que el contenedor ocupe el ancho disponible sin padding extra */
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 0;
+            }
+
+            /* Ajuste para saltos de página */
+            .page-break {
+                page-break-before: always;
+                display: block;
+                height: 1px; /* Para evitar colapsos */
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Botones de navbar  -->
+    <nav class="navbar navbar-expand-lg no-print sticky-top shadow-sm" style="background:#000000; z-index:1050;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/Logo-Sundara.jpg" alt="Logo Sundara" style="height:40px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSundara">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<nav class="navbar navbar-expand-lg no-print sticky-top shadow-sm" style="background:#000000; z-index:1050;">
-
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-    <img src="img/Logo-Sundara.jpg"
-         alt="Logo Sundara"
-         style="height:40px;">
-</a>
-
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSundara">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSundara">    
-
-     <div class="d-flex gap-2 mx-auto justify-content-center">
-        <button class="btn btn-outline-light btn-sm" onclick="window.print()">🖨️ Imprimir</button>
-        <button class="btn btn-outline-success btn-sm" onclick="saveAsPDF(event)">💾 PDF</button>
-        <button class="btn btn-outline-warning btn-sm" onclick="resetForm()">↺ Limpiar</button>
-      </div>
-    </div>
-  </div>
-</nav>
-  <!-- final del navbar  -->
+            <div class="collapse navbar-collapse" id="navbarSundara">    
+                <div class="d-flex gap-2 mx-auto justify-content-center">
+                    <button class="btn btn-outline-light btn-sm" onclick="window.print()">🖨️ Imprimir</button>
+                    <button class="btn btn-outline-success btn-sm" onclick="saveAsPDF(event)">💾 PDF</button>
+                    <button class="btn btn-outline-warning btn-sm" onclick="resetForm()">↺ Limpiar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- final del navbar  -->
 
     <!-- Contenido principal -->
     <div id="Hoja1" class="container py-3">
@@ -72,7 +120,7 @@
                 <br />
                 
                 <div id="CuerpoHoja1" class="Cuerp1">
-                    Hemos recibido de <input type="text" id="txtNombre" class="underlineNombre" placeholder="Nombre completo">,
+                    Hemos recibido de <input type="text" id="txtNombre" class="underlineNombre">,
                     estado civil <select id="ddlEstado" class="dropdown-custom-Estado">
                         <option value="">Soltero(a)</option>
                         <option>Casado(a)</option>
@@ -80,12 +128,12 @@
                         <option>Viudo(a)</option>
                     </select>,
                     de oficio
-                    <input type="text" id="txtOficio" class="underlineOficio" placeholder="Oficio">,
+                    <input type="text" id="txtOficio" class="underlineOficio">,
                     vecino de
                     <input type="text" id="txtDireccion" class="underlineDireccion connected-input"
-                        onkeyup="moveToNext(this, event)" maxlength="50" placeholder="Dirección">                    
+                        onkeyup="moveToNext(this, event)" maxlength="50">                    
                     nacionalidad
-                    <input type="text" id="txtNacionalidad2" class="underlineNacionalidad" placeholder="Nacionalidad">,
+                    <input type="text" id="txtNacionalidad2" class="underlineNacionalidad">,
                     <select id="ddlTipoId" class="dropdown-custom-Estado">
                         <option value="">ID</option>
                         <option>Cédula</option>
@@ -93,18 +141,18 @@
                         <option>Otros</option>
                     </select>,
                     número
-                    <input type="text" id="txtCedula" class="underlineId" placeholder="Número de identificación">,
+                    <input type="text" id="txtCedula" class="underlineId">,
                     teléfono celular
-                    <input type="tel" id="txtCelular" class="underlinetel1" placeholder="Teléfono celular">,
+                    <input type="tel" id="txtCelular" class="underlinetel1">,
                     teléfono #2
-                    <input type="tel" id="txtTelefono2" class="underlinetel2" placeholder="Teléfono adicional">,
+                    <input type="tel" id="txtTelefono2" class="underlinetel2">,
                     correo electrónico #1
-                    <input type="email" id="txtEmail1" class="underline" style="width:200px" placeholder="correo1@example.com">,
+                    <input type="email" id="txtEmail1" class="underline" style="width:200px">,
                     correo electrónico #2
-                    <input type="email" id="txtEmail2" class="underline" style="width:200px" placeholder="correo2@example.com">,
+                    <input type="email" id="txtEmail2" class="underline" style="width:200px">,
                     en adelante denominado el "CLIENTE", la suma de
-                    <input type="text" id="txtMonto" class="underlineMontoLetras" placeholder="Monto en letras">,
-                    dólares EEUU (USD$ <input type="text" id="txtMontoUSD" class="underline" style="width:100px" placeholder="0.00">).
+                    <input type="text" id="txtMonto" class="underlineMontoLetras">,
+                    dólares EEUU (USD$ <input type="text" id="txtMontoUSD" class="underline" style="width:100px">).
                     Este pago lo realiza el CLIENTE como reserva y a cuenta del precio de la casa finca filial
                     <input type="text" id="txtNumeroCasa" class="underlineNumCasa" readonly>,
                     con un lote de <input type="text" id="txtlote" class="underline-lote" readonly>
@@ -147,8 +195,8 @@
             
             <!-- PRIMERA: Precio y forma de pago -->
             <u><b>PRIMERA</b></u>:
-            El precio de la casa es de <input type="text" class="underlineP" placeholder="Precio en texto">
-            00/100 dólares EEUU (USD$ <input type="text" id="TextBox0" class="underlineMontos" placeholder="0.00">),
+            El precio de la casa es de <input type="text" class="underlineP">
+            00/100 dólares EEUU (USD$ <input type="text" id="TextBox0" class="underlineMontos">),
             que serán pagados por EL CLIENTE de la siguiente manera:
             <br />
             
@@ -160,7 +208,7 @@
                     <td class="right-column">
                         <div class="right-column-content">
                             <span class="currency">USD$</span>
-                            <input type="text" id="txtmonto1" class="underlineMontos" placeholder="0.00">
+                            <input type="text" id="txtmonto1" class="underlineMontos">
                         </div>
                     </td>
                 </tr>
@@ -171,18 +219,18 @@
                     <td class="right-column">
                         <div class="right-column-content">
                             <span class="currency">USD$</span>
-                            <input type="text" id="TextBox2" class="underlineMontos" placeholder="0.00">
+                            <input type="text" id="TextBox2" class="underlineMontos">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="left-column">- 22 cuotas mensuales consecutivas el
-                        <input type="number" id="txtnumcuota" class="underlineNumcuota" min="1" max="31" placeholder="15"> de cada mes
+                        <input type="number" id="txtnumcuota" class="underlineNumcuota" min="1" max="31"> de cada mes
                     </td>
                     <td class="right-column">
                         <div class="right-column-content">
                             <span class="currency">USD$</span>
-                            <input type="text" id="TextBox3" class="underlineMontos" placeholder="0.00">
+                            <input type="text" id="TextBox3" class="underlineMontos">
                         </div>
                     </td>
                 </tr>
@@ -191,7 +239,7 @@
                     <td class="right-column">
                         <div class="right-column-content">
                             <span class="currency">USD$</span>
-                            <input type="text" id="TextBox4" class="underlineMontos" placeholder="0.00">
+                            <input type="text" id="TextBox4" class="underlineMontos">
                         </div>
                     </td>
                 </tr>
@@ -206,7 +254,7 @@
             <div id="pnlMensajeDescuento" class="mensaje-descuento" style="display:none;">
                 Reducción de precio: Sí y solo Sí, el cliente cumple con todas las fechas y montos establecidas en el
                 plan de pagos, se le reconocerá un descuento de USD
-                <input type="text" id="txtreduceprecio" class="underlineMontoLetras" style="width:100px" placeholder="0.00">
+                <input type="text" id="txtreduceprecio" class="underlineMontoLetras" style="width:100px">
                 al momento de la Formalización.
             </div>
             
@@ -256,15 +304,15 @@
             <u><b>QUINTA:</b></u>
             Para efectos de pagos, depósitos, reintegros o devoluciones ambas partes se autorizan mutuamente para que se efectúen en las cuentas siguientes:<br />
             EL DESARROLLADOR: Banco Nacional <b><u>I Etapa: IBAN CR48015100010026234639</u></b>, Banco Nacional <b><u>II Etapa IBAN CR39015100010026234898</u></b>.<br />
-            EL CLIENTE: Banco <input type="text" id="txtBancoCliente" class="underline" style="width:150px" placeholder="Banco">
-            N° de cuenta <input type="text" id="txtCuentaCliente" class="underline" style="width:150px" placeholder="Número de cuenta"><br />
+            EL CLIENTE: Banco <input type="text" id="txtBancoCliente" class="underline" style="width:150px">
+            N° de cuenta <input type="text" id="txtCuentaCliente" class="underline" style="width:150px"><br />
             <b>Para transferencias al exterior completar:</b><br />
-            Dueño de la cuenta: <input type="text" id="txtDueñoCuenta" class="underline" style="width:200px" placeholder="Nombre del titular">
-            Cuenta N°: <input type="text" id="txtCuentaExterior" class="underline" style="width:150px" placeholder="Número de cuenta"><br />
-            Nombre del banco: <input type="text" id="txtNombreBanco" class="underline" style="width:200px" placeholder="Nombre del banco"><br />
-            ABA: <input type="text" id="txtABA" class="underline" style="width:100px" placeholder="ABA">
-            SWIFT: <input type="text" id="txtSWIFT" class="underline" style="width:100px" placeholder="SWIFT"><br />
-            Dirección del banco: <input type="text" id="txtDireccionBanco" class="underline-direcionbanco" style="width:300px" placeholder="Dirección del banco">
+            Dueño de la cuenta: <input type="text" id="txtDueñoCuenta" class="underline" style="width:200px">
+            Cuenta N°: <input type="text" id="txtCuentaExterior" class="underline" style="width:150px"><br />
+            Nombre del banco: <input type="text" id="txtNombreBanco" class="underline" style="width:200px"><br />
+            ABA: <input type="text" id="txtABA" class="underline" style="width:100px">
+            SWIFT: <input type="text" id="txtSWIFT" class="underline" style="width:100px"><br />
+            Dirección del banco: <input type="text" id="txtDireccionBanco" class="underline-direcionbanco" style="width:300px">
             <br /><br />
             
             <!-- SEXTA:  -->
