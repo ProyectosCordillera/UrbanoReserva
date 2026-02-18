@@ -355,10 +355,7 @@ body {
         padding-top: 0 !important;
     }
     
-    /* ✅ ELIMINAR BR EXCESIVOS ANTES DE PÁGINA 3 */
-    #pagina3 br {
-        display: none;
-    }
+   
     
     /* Hide non-essential elements for print */
     .no-print {
