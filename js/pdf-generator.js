@@ -19,46 +19,35 @@ function saveAsPDF(event) {
         const element = document.getElementById('Hoja1');
 
         const opt = {
-            // ✅ MÁRGENES AJUSTADOS [superior, derecho, inferior, izquierdo] en mm
-            margin: [10, 10, 10, 10],
-            
+            margin: [3, 2, 3, 2],
             filename: 'recibo-reserva.pdf',
-            
             image: {
                 type: 'jpeg',
                 quality: 0.98
             },
-            
             html2canvas: {
-                scale: 2,
+                scale: 1.3,
                 useCORS: true,
                 logging: false,
                 letterRendering: true,
                 allowTaint: false,
-                scrollY: 0,
-                windowWidth: 800
+                scrollY: 0   // 🔥 Muy importante
             },
-            
             jsPDF: {
                 unit: 'mm',
                 format: 'letter',
                 orientation: 'portrait'
             },
-            
-            // ✅ CONFIGURACIÓN DE SALTOS DE PÁGINA
             pagebreak: {
                 mode: ['css'],
-                before: ['.page-break'],
-                after: [],
-                avoid: ['.signature-section']
+                before: '#pagina2, #pagina3'
             }
         };
 
-        // ✅ CADENA DE PROMESAS CORREGIDA
         html2pdf()
             .set(opt)
             .from(element)
-            .save()  // ✅ .save() directo, sin toPdf().get('pdf')
+            .save()
             .then(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -70,5 +59,5 @@ function saveAsPDF(event) {
                 btn.disabled = false;
             });
 
-    }, 300);
+    }, 300); // 🔥 tiempo suficiente para estabilizar scroll
 }
