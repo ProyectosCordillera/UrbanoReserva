@@ -329,9 +329,12 @@ body {
     
     .signature-section { margin: 20px 0 15px 0; }
     
+     /* ✅ CLASE PAGE-BREAK */
     .page-break {
-        margin-top: 1.5cm !important;
+        margin: 0 !important;
+        padding: 0 !important;
         page-break-after: always;
+        page-break-before: always;
     }
     
     .page-break:last-child {
@@ -341,13 +344,20 @@ body {
     /* Evitar cortes en firmas */
     .signature-section { page-break-inside: avoid; }
     
-   /* ✅ MÁRGENES SUPERIORES AJUSTADOS */
+  /* ✅ MÁRGENES SUPERIORES CON MARGIN-TOP (MÁS EFECTIVO) */
     #pagina2 { 
-        padding-top: 0.3cm !important; /* Página 2 */
+        margin-top: 0.3cm !important;
+        padding-top: 0 !important;
     }
     
     #pagina3 { 
-        padding-top: 0.1cm !important; /* ✅ Página 3 (NUEVO) */
+        margin-top: 0.1cm !important; /* ✅ VALOR PEQUEÑO PARA SUBIR TEXTO */
+        padding-top: 0 !important;
+    }
+    
+    /* ✅ ELIMINAR BR EXCESIVOS ANTES DE PÁGINA 3 */
+    #pagina3 br {
+        display: none;
     }
     
     /* Hide non-essential elements for print */
