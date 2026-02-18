@@ -127,7 +127,10 @@ body {
 .underline-direcionbanco,
 .underlineNombre,
 .underlineMontos,
-.underlineCuentaCliente{
+.underlineCuentaCliente,
+.underlineCorreo1,
+.underlineCorreo2
+{
     display: inline-block;
     font-family: Arial, sans-serif;
     font-size: 12pt; /* Cambiado a 12pt */
@@ -174,6 +177,8 @@ body {
 .underlineddl { width: 30px; min-width: 30px; max-width: 40px; text-align: center; letter-spacing: 1px; font-weight: bold; }
 .underlineP { width: 300px; min-width: 300px; }
 .underlineCuentaCliente { width: 200px; min-width: 200px; }
+.underlineCorreo1 { width: 200px; min-width: 200px; }
+.underlineCorreo2 { width: 300px; min-width: 300px; }
 
 /* ------------------ Radios ------------------ */
 .radio-custom {
