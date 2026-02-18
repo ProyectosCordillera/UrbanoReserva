@@ -21,7 +21,7 @@ function saveAsPDF(event) {
         const opt = {
             // ✅ MÁRGENES AJUSTADOS A 1.5CM (15mm)
             // Formato: [superior, derecho, inferior, izquierdo] en mm
-            margin: [15, 15, 15, 15],
+            margin: [10, 10, 10, 10],
             
             filename: 'recibo-reserva.pdf',
             
