@@ -341,8 +341,14 @@ body {
     /* Evitar cortes en firmas */
     .signature-section { page-break-inside: avoid; }
     
-    /* Margen superior en página 2 */
-    #pagina2 { padding-top: 0.2cm; }
+   /* ✅ MÁRGENES SUPERIORES AJUSTADOS */
+    #pagina2 { 
+        padding-top: 0.3cm !important; /* Página 2 */
+    }
+    
+    #pagina3 { 
+        padding-top: 0.3cm !important; /* ✅ Página 3 (NUEVO) */
+    }
     
     /* Hide non-essential elements for print */
     .no-print {
