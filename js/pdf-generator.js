@@ -1,61 +1,63 @@
+// ============================================
+// FUNCIÓN PARA GENERAR PDF
+// ============================================
+
 function saveAsPDF(event) {
 
+    // 🔥 Forzar scroll arriba antes de capturar
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Mostrar feedback al usuario
     const btn = event.target;
     const originalText = btn.innerHTML;
-    btn.innerHTML = '⏳ Generando PDF...';
+    btn.innerHTML = '<span>⏳</span> Generando PDF...';
     btn.disabled = true;
 
+    // Pequeño delay para asegurar que el navegador esté arriba
     setTimeout(() => {
 
         const element = document.getElementById('Hoja1');
 
         const opt = {
-
-            margin: [0, 0, 0, 0],
-
+            margin: [3, 2, 3, 2],
             filename: 'recibo-reserva.pdf',
-
-            image: { type: 'jpeg', quality: 1 },
-
-            html2canvas: {
-                scale: 1,
-                useCORS: true,
-                scrollY: 0,
-
-                // ⭐ ELIMINA FONDO GRIS
-                backgroundColor: "#ffffff",
-
-                // ⭐ EVITA QUE SE EXPANDA EL CANVAS
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
+            image: {
+                type: 'jpeg',
+                quality: 0.98
             },
-
+            html2canvas: {
+                scale: 1.3,
+                useCORS: true,
+                logging: false,
+                letterRendering: true,
+                allowTaint: false,
+                scrollY: 0   // 🔥 Muy importante
+            },
             jsPDF: {
                 unit: 'mm',
                 format: 'letter',
                 orientation: 'portrait'
             },
-
-            // ⭐ CONTROL REAL DE PAGINACIÓN
             pagebreak: {
                 mode: ['css'],
-
-                // SOLO cortar donde tú lo indiques
-                before: ['#pagina2', '#pagina3'],
-
-                // EVITA hojas vacías
-                avoid: ['.signature-section']
+                before: '#pagina2, #pagina3'
             }
         };
 
-       html2pdf()
+        html2pdf()
             .set(opt)
             .from(element)
             .save()
             .then(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error al generar PDF:', error);
+                alert('Ocurrió un error al generar el PDF:\n' + error.message);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             });
 
-    }, 150);
+    }, 300); // 🔥 tiempo suficiente para estabilizar scroll
 }
