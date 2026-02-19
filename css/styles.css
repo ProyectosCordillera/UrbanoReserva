@@ -299,10 +299,12 @@ body {
 
 /* ------------------ Estilos de impresión ------------------ */
 @media print {
-    @page {
-        /* ✅ MÁRGENES AJUSTADOS A 1.5 CM */
-        margin: 2cm; 
-        size: auto;
+     @page {
+        size: auto; 
+        margin-top: 0.5cm;      /* margen superior reducido para subir contenido */
+        margin-bottom: 0.5cm;   /* margen inferior reducido */
+        margin-left: 2cm;       /* margen izquierdo fijo */
+        margin-right: 2cm;      /* margen derecho fijo */
     }
     
     body {
