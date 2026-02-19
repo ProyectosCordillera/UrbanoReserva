@@ -35,7 +35,7 @@ function saveAsPDF(event) {
             },
             jsPDF: {
                 unit: 'mm',
-                format: 'A4',
+                format: 'a4',
                 orientation: 'portrait'
             },
           pagebreak: {
