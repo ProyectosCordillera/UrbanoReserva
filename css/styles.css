@@ -299,13 +299,15 @@ body {
 
 /* ------------------ Estilos de impresión ------------------ */
 @media print {
-     @page {
-        size: auto; 
-        margin-top: 0.5cm;      /* margen superior reducido para subir contenido */
-        margin-bottom: 0.5cm;   /* margen inferior reducido */
-        margin-left: 2cm;       /* margen izquierdo fijo */
-        margin-right: 2cm;      /* margen derecho fijo */
+    input, select {
+        border: none !important;
+        border-bottom: 1px solid #000 !important;
+        background: transparent !important;
+        width: auto !important;
+        max-width: 100% !important;
+        -webkit-print-color-adjust: exact;
     }
+}
     
     body {
         padding: 0;
