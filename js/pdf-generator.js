@@ -2,31 +2,30 @@
 // FUNCIÓN PARA GENERAR PDF
 // ============================================
 function aplicarEstiloPDF() {
-
-      if (document.getElementById("pdf-style")) return;
+    if (document.getElementById("pdf-style")) return;
     
     const style = document.createElement("style");
     style.id = "pdf-style";
-
     style.innerHTML = `
-        #Hoja1 {
-            width: 210mm !important;
-            min-height: auto !important;
-            height: auto !important;
-            margin: 0 !important;
-            padding: 10mm !important;
-            box-sizing: border-box !important;
+        @media print {
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            #Hoja1 {
+                width: 210mm !important;
+                height: 297mm !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                box-sizing: border-box !important;
+            }
         }
-
-        #Hoja1 * {
-            page-break-inside: avoid;
-        }
-
-        body {
-            background: white !important;
+        
+        /* Clase utilitaria para márgenes internos */
+ .pdf-margin {
+            padding: 12mm 15mm;
         }
     `;
-
     document.head.appendChild(style);
 }
 
