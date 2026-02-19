@@ -9,15 +9,9 @@ function saveAsPDF(event) {
 
         const element = document.getElementById('Hoja1');
 
-        // 👉 MÁRGENES CONTROLADOS EN TIEMPO REAL
-        const marginTop = 12;
-        const marginBottom = 12;
-        const marginLeft = 15;
-        const marginRight = 15;
-
         const opt = {
 
-            margin: [marginTop, marginLeft, marginBottom, marginRight],
+            margin: [0, 0, 0, 0],
 
             filename: 'recibo-reserva.pdf',
 
@@ -36,10 +30,8 @@ function saveAsPDF(event) {
                 orientation: 'portrait'
             },
 
-            // 👉 CORTE CONTROLADO EXACTO
             pagebreak: {
-                mode: ['css', 'legacy'],
-                after: ['#PAgina1', '#pagina2']
+                mode: ['avoid-all', 'css', 'legacy']
             }
         };
 
