@@ -35,6 +35,13 @@ body {
   
 }
 
+.signature-section,
+.signature-area,
+.signature-name,
+.signature-info {
+    text-align: center !important;
+}
+
 /* ------------------ Dropdowns personalizados ------------------ */
 .dropdown-custom-Incluye,
 .dropdown-custom-Tipoparqueo,
