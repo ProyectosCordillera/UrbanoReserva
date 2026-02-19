@@ -330,16 +330,14 @@ body {
     .signature-section { margin: 20px 0 15px 0; }
     
      /* ✅ CLASE PAGE-BREAK */
-    .page-break {
+        .page-break {
         margin: 0 !important;
         padding: 0 !important;
-        page-break-after: always;
+        break-before: page;
         page-break-before: always;
     }
     
-    .page-break:last-child {
-        page-break-after: auto;
-    }
+  
     
     /* Evitar cortes en firmas */
     .signature-section { page-break-inside: avoid; }
