@@ -1,9 +1,43 @@
 // ============================================
 // FUNCIÓN PARA GENERAR PDF
 // ============================================
+function aplicarEstiloPDF() {
+
+      if (document.getElementById("pdf-style")) return;
+    
+    const style = document.createElement("style");
+    style.id = "pdf-style";
+
+    style.innerHTML = `
+        #Hoja1 {
+            width: 210mm !important;
+            min-height: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        #Hoja1 * {
+            page-break-inside: avoid;
+        }
+
+        body {
+            background: white !important;
+        }
+    `;
+
+    document.head.appendChild(style);
+}
+
+function quitarEstiloPDF() {
+    const style = document.getElementById("pdf-style");
+    if (style) style.remove();
+}
 
 function saveAsPDF(event) {
 
+       aplicarEstiloPDF();   // ⭐ AGREGAR ESTA LÍNEA
     // 🔥 Forzar scroll arriba antes de capturar
     window.scrollTo({ top: 0, behavior: 'instant' });
 
@@ -50,10 +84,14 @@ function saveAsPDF(event) {
             .from(element)
             .save()
             .then(() => {
+                quitarEstiloPDF();   // ⭐ AGREGAR
+            
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             })
             .catch(error => {
+                
+                quitarEstiloPDF();   // ⭐ AGREGAR
                 console.error('Error al generar PDF:', error);
                 alert('Ocurrió un error al generar el PDF:\n' + error.message);
                 btn.innerHTML = originalText;
