@@ -12,7 +12,10 @@ body {
     margin-left: -15px;
     padding-left: 0;
 }
-
+#Hoja1,
+#Hoja1 * {
+    text-align: justify !important;
+}
 /* Este es el contenedor principal */
 #Hoja1.container {
     width: 210mm;
