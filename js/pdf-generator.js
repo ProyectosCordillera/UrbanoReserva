@@ -19,14 +19,14 @@ function saveAsPDF(event) {
         const element = document.getElementById('Hoja1');
 
         const opt = {
-            margin: [3, 2, 3, 2],
+            margin: [10, 10, 10, 10],
             filename: 'recibo-reserva.pdf',
             image: {
                 type: 'jpeg',
                 quality: 0.98
             },
             html2canvas: {
-                scale: 1.3,
+                scale: 1,
                 useCORS: true,
                 logging: false,
                 letterRendering: true,
@@ -39,7 +39,7 @@ function saveAsPDF(event) {
                 orientation: 'portrait'
             },
           pagebreak: {
-            mode: ['avoid-all', 'legacy'],
+            mode: ['legacy'],
             before: ['#pagina2', '#pagina3']
         }
         };
