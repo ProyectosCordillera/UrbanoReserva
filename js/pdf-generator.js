@@ -1,7 +1,5 @@
 function saveAsPDF(event) {
 
-    window.scrollTo(0, 0);
-
     const btn = event.target;
     const originalText = btn.innerHTML;
     btn.innerHTML = '⏳ Generando PDF...';
@@ -11,17 +9,19 @@ function saveAsPDF(event) {
 
         const element = document.getElementById('Hoja1');
 
+        // 👉 MÁRGENES CONTROLADOS EN TIEMPO REAL
+        const marginTop = 12;
+        const marginBottom = 12;
+        const marginLeft = 15;
+        const marginRight = 15;
+
         const opt = {
 
-            // 👉 AQUÍ CONTROLAS LOS MÁRGENES
-            margin: [15, 15, 15, 15],
+            margin: [marginTop, marginLeft, marginBottom, marginRight],
 
             filename: 'recibo-reserva.pdf',
 
-            image: {
-                type: 'jpeg',
-                quality: 0.98
-            },
+            image: { type: 'jpeg', quality: 1 },
 
             html2canvas: {
                 scale: 1,
@@ -36,18 +36,17 @@ function saveAsPDF(event) {
                 orientation: 'portrait'
             },
 
-            // 👉 CLAVE: usar AFTER, nunca BEFORE
+            // 👉 CORTE CONTROLADO EXACTO
             pagebreak: {
-                mode: ['legacy'],
+                mode: ['css', 'legacy'],
                 after: ['#PAgina1', '#pagina2']
             }
         };
 
-        html2pdf().set(opt).from(element).save()
-            .then(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            });
+        html2pdf().set(opt).from(element).save().then(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
 
-    }, 200);
+    }, 150);
 }
