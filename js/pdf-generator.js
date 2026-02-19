@@ -52,6 +52,10 @@ window.saveAsPDF = function(event) {
             return;
         }
 
+        // Obtener el número de la casa
+const numeroCasa = document.getElementById('txtNumeroCasa').value || '00';
+
+// Definir opciones de html2pdf con el nombre de archivo dinámico
         const opt = {
             margin: 0,
              filename: 'Recibo de Reserva FF - ' + numeroCasa + '.pdf',
