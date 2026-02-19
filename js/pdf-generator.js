@@ -14,7 +14,7 @@ function aplicarEstiloPDF() {
             min-height: auto !important;
             height: auto !important;
             margin: 0 !important;
-            padding: 0 !important;
+            padding: 10mm !important;
             box-sizing: border-box !important;
         }
 
