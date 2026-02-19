@@ -160,7 +160,7 @@ body {
 .underlineId { width: 120px; min-width: 120px; }
 .underlinetel1 { width: 120px; min-width: 120px; }
 .underlinetel2 { width: 120px; min-width: 120px; }
-.underlineNombre { width: 290px; min-width: 290px; }
+.underlineNombre { width: 310px; min-width: 310px; }
 .underline-direcionbanco { width: 430px; min-width: 430px; }
 .underlineMontoLetras { width: 200px; min-width: 200px; }
 .underlineMontos { width: 120px; min-width: 120px; text-align: right; font-family: monospace; }
@@ -172,7 +172,7 @@ body {
 .underlineddl { width: 30px; min-width: 30px; max-width: 40px; text-align: center; letter-spacing: 1px; font-weight: bold; }
 .underlineP { width: 300px; min-width: 300px; }
 .underlineCuentaCliente { width: 200px; min-width: 200px; }
-.underlineCorreo1 { width: 200px; min-width: 200px; }
+.underlineCorreo1 { width: 300px; min-width: 300px; }
 .underlineCorreo2 { width: 300px; min-width: 300px; }
 
 /* ------------------ Radios ------------------ */
