@@ -168,10 +168,10 @@ body {
 .underlineNumCasa { width: 70px; min-width: 70px; }
 .underline-lote { width: 80px; min-width: 80px; }
 .underline-tipocasa { width: 80px; min-width: 80px; font-weight: bold; }
-.underlineId { width: 120px; min-width: 120px; }
-.underlinetel1 { width: 120px; min-width: 120px; }
-.underlinetel2 { width: 120px; min-width: 120px; }
-.underlineNombre { width: 325px; min-width: 325px; }
+.underlineId { width: 150px; min-width: 150px; }
+.underlinetel1 { width: 220px; min-width: 220px; }
+.underlinetel2 { width: 220px; min-width: 220px; }
+.underlineNombre { width: 330px; min-width: 330px; }
 .underline-direcionbanco { width: 430px; min-width: 430px; }
 .underlineMontoLetras { width: 200px; min-width: 200px; }
 .underlineMontos { width: 120px; min-width: 120px; text-align: right; font-family: monospace; }
@@ -179,7 +179,7 @@ body {
 .underline { width: 150px; min-width: 150px; }
 .underlineDireccion { width: 300px; min-width: 300px; }
 .underlineDireccion2 { width: 450px; min-width: 450px; }
-.underlineOficio { width: 120px; min-width: 120px; }
+.underlineOficio { width: 220px; min-width: 220px; }
 .underlineddl { width: 30px; min-width: 30px; max-width: 40px; text-align: center; letter-spacing: 1px; font-weight: bold; }
 .underlineP { width: 300px; min-width: 300px; }
 .underlineCuentaCliente { width: 200px; min-width: 200px; }
