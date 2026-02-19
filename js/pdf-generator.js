@@ -12,7 +12,10 @@ function saveAsPDF(event) {
         const element = document.getElementById('Hoja1');
 
         const opt = {
-            margin: 0,   // 🔥 IMPORTANTE: cero margen externo
+
+            // 👉 AQUÍ CONTROLAS LOS MÁRGENES
+            margin: [15, 15, 15, 15],
+
             filename: 'recibo-reserva.pdf',
 
             image: {
@@ -21,9 +24,9 @@ function saveAsPDF(event) {
             },
 
             html2canvas: {
-                scale: 0.98,
+                scale: 1,
                 useCORS: true,
-                backgroundColor: "#ffffff", // 🔥 QUITA FONDO GRIS
+                backgroundColor: "#ffffff",
                 scrollY: 0
             },
 
@@ -33,9 +36,10 @@ function saveAsPDF(event) {
                 orientation: 'portrait'
             },
 
+            // 👉 CLAVE: usar AFTER, nunca BEFORE
             pagebreak: {
                 mode: ['legacy'],
-                after: ['#PAgina1', '#pagina2'] // 🔥 CLAVE
+                after: ['#PAgina1', '#pagina2']
             }
         };
 
