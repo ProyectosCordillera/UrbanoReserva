@@ -26,7 +26,7 @@ function saveAsPDF(event) {
                 quality: 0.98
             },
             html2canvas: {
-                scale: 1.3,
+                scale: 1,
                 useCORS: true,
                 logging: false,
                 letterRendering: true,
@@ -35,7 +35,7 @@ function saveAsPDF(event) {
             },
             jsPDF: {
                 unit: 'mm',
-                format: 'letter',
+                format: 'A4',
                 orientation: 'portrait'
             },
           pagebreak: {
