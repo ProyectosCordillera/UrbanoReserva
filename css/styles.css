@@ -299,15 +299,7 @@ body {
 
 /* ------------------ Estilos de impresión ------------------ */
 @media print {
-    input, select {
-        border: none !important;
-        border-bottom: 1px solid #000 !important;
-        background: transparent !important;
-        width: auto !important;
-        max-width: 100% !important;
-        -webkit-print-color-adjust: exact;
-    }
-}
+@page { /* ✅ MÁRGENES AJUSTADOS A 1.5 CM */ margin: 1.5cm; size: auto; }
     
     body {
         padding: 0;
