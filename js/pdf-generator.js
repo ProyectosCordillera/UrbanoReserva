@@ -3,28 +3,26 @@
 // ============================================
 function aplicarEstiloPDF() {
     if (document.getElementById("pdf-style")) return;
-    
+
     const style = document.createElement("style");
     style.id = "pdf-style";
     style.innerHTML = `
-      @media print {
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        justify-content: center !important; /* Centra horizontalmente */
-        align-items: flex-start !important;  /* Empieza desde arriba */
-    }
+        @media print {
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+                text-align: center; /* centrado horizontal */
+            }
 
-    #Hoja1 {
-        width: 210mm !important;
-        min-height: 297mm !important;
-        padding: 15mm !important;          /* Padding interno seguro */
-        box-sizing: border-box !important;
-        border: 1px solid transparent;     /* ayuda a html2pdf a medir el contenedor */
-        background: white;
-    }
-}
+            #Hoja1 {
+                display: inline-block; /* importante para centrar en body */
+                width: 210mm !important;
+                min-height: 297mm !important;
+                padding: 15mm !important;
+                box-sizing: border-box !important;
+                background: white;
+            }
+        }
     `;
     document.head.appendChild(style);
 }
