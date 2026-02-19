@@ -301,7 +301,7 @@ body {
 @media print {
     @page {
         /* ✅ MÁRGENES AJUSTADOS A 1.5 CM */
-        margin: 0.5cm; 
+        margin: 2cm; 
         size: auto;
     }
     
@@ -343,7 +343,7 @@ body {
     
   /* ✅ MÁRGENES SUPERIORES CON MARGIN-TOP (MÁS EFECTIVO) */
     #pagina2 { 
-        margin-top: 0.3cm !important;
+        margin-top: 0.1cm !important;
         padding-top: 0 !important;
     }
     
