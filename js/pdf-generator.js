@@ -7,24 +7,24 @@ function aplicarEstiloPDF() {
     const style = document.createElement("style");
     style.id = "pdf-style";
     style.innerHTML = `
-        @media print {
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            #Hoja1 {
-                width: 210mm !important;
-                height: 297mm !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-            }
-        }
-        
-        /* Clase utilitaria para márgenes internos */
- .pdf-margin {
-            padding: 12mm 15mm;
-        }
+      @media print {
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: center !important; /* Centra horizontalmente */
+        align-items: flex-start !important;  /* Empieza desde arriba */
+    }
+
+    #Hoja1 {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        padding: 15mm !important;          /* Padding interno seguro */
+        box-sizing: border-box !important;
+        border: 1px solid transparent;     /* ayuda a html2pdf a medir el contenedor */
+        background: white;
+    }
+}
     `;
     document.head.appendChild(style);
 }
@@ -51,32 +51,14 @@ function saveAsPDF(event) {
 
         const element = document.getElementById('Hoja1');
 
-        const opt = {
-            margin: [3, 2, 3, 2],
-            filename: 'recibo-reserva.pdf',
-            image: {
-                type: 'jpeg',
-                quality: 0.98
-            },
-            html2canvas: {
-                scale: 1,
-                useCORS: true,
-                logging: false,
-                letterRendering: true,
-                allowTaint: false,
-                scrollY: 0   // 🔥 Muy importante
-            },
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait'
-            },
-            pagebreak: {
-                mode: ['css'],
-                before: '#pagina2, #pagina3'
-            }
-        
-        };
+       const opt = {
+    margin: 0, // ❌ ya no usar [3,2,3,2]
+    filename: 'recibo-reserva.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, logging: false, letterRendering: true, scrollY: 0 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css'], before: '#pagina2, #pagina3' }
+};
 
         html2pdf()
             .set(opt)
