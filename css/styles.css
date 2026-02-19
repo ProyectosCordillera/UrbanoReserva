@@ -15,15 +15,12 @@ body {
 
 /* Este es el contenedor principal */
 #Hoja1.container {
-    width: 200mm; 
-    min-height: 11in;
-    max-width: 190mm; 
-    margin: 20px auto;
-    padding: 0.5in;
-    border-radius: 5px;
-    text-align: justify;
-    background-color: white;
-  
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 10mm;
+    background: white;
+    box-sizing: border-box;
 }
 
 /* ------------------ Texto y párrafos ------------------ */
