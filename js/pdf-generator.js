@@ -38,9 +38,10 @@ function saveAsPDF(event) {
                 format: 'letter',
                 orientation: 'portrait'
             },
-            pagebreak: {
-                mode: ['css'],
-                before: '#pagina2, #pagina3'
+          pagebreak: {
+                mode: ['avoid-all', 'css'],
+                before: ['#pagina2', '#pagina3'],
+                avoid: ['.signature-section']
             }
         };
 
