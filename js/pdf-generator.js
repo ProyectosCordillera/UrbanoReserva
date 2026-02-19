@@ -32,14 +32,13 @@ function quitarEstiloPDF() {
     if (style) style.remove();
 }
 
-function saveAsPDF(event) {
+window.saveAsPDF = function(event) {
     const btn = event.target;
     btn.innerHTML = '⏳ Generando PDF...';
     btn.disabled = true;
 
     const element = document.getElementById('Hoja1');
 
-    // 🔹 Estilos temporales para html2pdf
     element.style.width = '210mm';
     element.style.minHeight = '297mm';
     element.style.padding = '15mm';
@@ -69,7 +68,6 @@ function saveAsPDF(event) {
             .from(element)
             .save()
             .finally(() => {
-                // 🔹 Limpiar estilos temporales
                 element.style.width = '';
                 element.style.minHeight = '';
                 element.style.padding = '';
@@ -81,5 +79,5 @@ function saveAsPDF(event) {
                 btn.disabled = false;
             });
 
-    }, 800); // ⏱ tiempo para que se renderice todo
-}
+    }, 800);
+};
