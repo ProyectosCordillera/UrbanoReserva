@@ -58,7 +58,7 @@ const numeroCasa = document.getElementById('txtNumeroCasa').value || '00';
 // Definir opciones de html2pdf con el nombre de archivo dinámico
         const opt = {
             margin: 0,
-             filename: 'Recibo de Reserva FF - ' + numeroCasa + '.pdf',
+             filename: 'Recibo de Reserva - ' + numeroCasa + '.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
