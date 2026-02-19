@@ -1,6 +1,4 @@
-============================================
 // FUNCIÓN PARA GENERAR PDF
-// ============================================
 function aplicarEstiloPDF() {
     if (document.getElementById("pdf-style")) return;
 
@@ -11,11 +9,11 @@ function aplicarEstiloPDF() {
             body {
                 margin: 0 !important;
                 padding: 0 !important;
-                text-align: center; /* centrado horizontal */
+                text-align: center;
             }
 
             #Hoja1 {
-                display: inline-block; /* importante para centrar en body */
+                display: inline-block;
                 width: 210mm !important;
                 min-height: 297mm !important;
                 padding: 15mm !important;
@@ -34,7 +32,7 @@ function quitarEstiloPDF() {
 
 window.saveAsPDF = function(event) {
     const btn = event.target;
-    btn.innerHTML = '⏳ Generando PDF...';
+    btn.innerHTML = 'Generando PDF...';
     btn.disabled = true;
 
     const element = document.getElementById('Hoja1');
@@ -47,9 +45,9 @@ window.saveAsPDF = function(event) {
     element.style.boxSizing = 'border-box';
 
     setTimeout(() => {
-        if (!html2pdf) {
+        if (!window.html2pdf) {
             alert('html2pdf.js no cargó correctamente.');
-            btn.innerHTML = '💾 PDF';
+            btn.innerHTML = 'PDF';
             btn.disabled = false;
             return;
         }
@@ -58,26 +56,22 @@ window.saveAsPDF = function(event) {
             margin: 0,
             filename: 'recibo.pdf',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, scrollY: 0, logging: true },
+            html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
             pagebreak: { mode: ['css'], before: '#pagina2, #pagina3' }
         };
 
-        html2pdf()
-            .set(opt)
-            .from(element)
-            .save()
-            .finally(() => {
-                element.style.width = '';
-                element.style.minHeight = '';
-                element.style.padding = '';
-                element.style.background = '';
-                element.style.margin = '';
-                element.style.boxSizing = '';
+        html2pdf().set(opt).from(element).save().finally(() => {
+            element.style.width = '';
+            element.style.minHeight = '';
+            element.style.padding = '';
+            element.style.background = '';
+            element.style.margin = '';
+            element.style.boxSizing = '';
 
-                btn.innerHTML = '💾 PDF';
-                btn.disabled = false;
-            });
+            btn.innerHTML = 'PDF';
+            btn.disabled = false;
+        });
 
     }, 800);
 };
