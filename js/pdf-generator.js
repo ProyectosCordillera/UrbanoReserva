@@ -6,26 +6,44 @@ function aplicarEstiloPDF() {
     
     const style = document.createElement("style");
     style.id = "pdf-style";
-    style.innerHTML = `
-        @media print {
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            #Hoja1 {
-                width: 210mm !important;
-                height: 297mm !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-                box-sizing: border-box !important;
-            }
+   style.innerHTML = `
+    @media print {
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
-        
-        /* Clase utilitaria para márgenes internos */
+        #Hoja1 {
+            width: 210mm !important;
+            min-height: 297mm !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+            image-rendering: -webkit-optimize-contrast !important;
+            image-rendering: crisp-edges !important;
+        }
+    }
+    
+    /* Evita que el navegador escale imágenes */
+    #Hoja1 img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Texto más nítido */
+    #Hoja1 {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+    
  .pdf-margin {
-            padding: 12mm 15mm;
-        }
-    `;
+        padding: 12mm 15mm;
+    }
+`;
     document.head.appendChild(style);
 }
 
@@ -35,47 +53,55 @@ function quitarEstiloPDF() {
 }
 
 function saveAsPDF(event) {
-
-       aplicarEstiloPDF();   // ⭐ AGREGAR ESTA LÍNEA
-    // 🔥 Forzar scroll arriba antes de capturar
+    aplicarEstiloPDF();
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Mostrar feedback al usuario
     const btn = event.target;
     const originalText = btn.innerHTML;
     btn.innerHTML = '<span>⏳</span> Generando PDF...';
     btn.disabled = true;
 
-    // Pequeño delay para asegurar que el navegador esté arriba
     setTimeout(() => {
-
         const element = document.getElementById('Hoja1');
 
         const opt = {
             margin: [3, 2, 3, 2],
             filename: 'recibo-reserva.pdf',
+            
+            // 🖼️ Configuración de imagen (CALIDAD)
             image: {
-                type: 'jpeg',
-                quality: 0.98
+                type: 'png',              // ← PNG para texto nítido (sin compresión con pérdida)
+                quality: 1.0              // ← Máxima calidad (solo aplica si usas jpeg)
             },
+            
+            // 🎨 html2canvas: El corazón de la calidad
             html2canvas: {
-                scale: 1,
+                scale: 4,                   // ← ⭐ CLAVE: 2=buena, 3=excelente, 4=máxima (pero más pesado)
                 useCORS: true,
                 logging: false,
                 letterRendering: true,
                 allowTaint: false,
-                scrollY: 0   // 🔥 Muy importante
+                scrollY: -window.scrollY,
+                backgroundColor: '#ffffff', // ← Evita fondos transparentes
+                windowWidth: element.scrollWidth,
+                windowHeight: element.scrollHeight,
+                antialias: true,            // ← Suaviza bordes
+                removeContainer: true       // ← Limpia memoria después
             },
+            
+            // 📄 jsPDF: Configuración de salida
             jsPDF: {
                 unit: 'mm',
                 format: 'a4',
-                orientation: 'portrait'
+                orientation: 'portrait',
+                compress: true              // ← Reduce peso sin perder calidad visible
             },
+            
+            // 📑 Saltos de página
             pagebreak: {
                 mode: ['css'],
                 before: '#pagina2, #pagina3'
             }
-        
         };
 
         html2pdf()
@@ -83,19 +109,17 @@ function saveAsPDF(event) {
             .from(element)
             .save()
             .then(() => {
-                quitarEstiloPDF();   // ⭐ AGREGAR
-            
+                quitarEstiloPDF();
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             })
             .catch(error => {
-                
-                quitarEstiloPDF();   // ⭐ AGREGAR
+                quitarEstiloPDF();
                 console.error('Error al generar PDF:', error);
                 alert('Ocurrió un error al generar el PDF:\n' + error.message);
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
 
-    }, 300); // 🔥 tiempo suficiente para estabilizar scroll
+    }, 150); // 150ms es suficiente con estilos aplicados
 }
