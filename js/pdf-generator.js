@@ -20,8 +20,14 @@ function saveAsPDF(event) {
             html2canvas: {
                 scale: 1,
                 useCORS: true,
+                scrollY: 0,
+
+                // ⭐ ELIMINA FONDO GRIS
                 backgroundColor: "#ffffff",
-                scrollY: 0
+
+                // ⭐ EVITA QUE SE EXPANDA EL CANVAS
+                windowWidth: element.scrollWidth,
+                windowHeight: element.scrollHeight
             },
 
             jsPDF: {
@@ -30,15 +36,26 @@ function saveAsPDF(event) {
                 orientation: 'portrait'
             },
 
+            // ⭐ CONTROL REAL DE PAGINACIÓN
             pagebreak: {
-                mode: ['avoid-all', 'css', 'legacy']
+                mode: ['css'],
+
+                // SOLO cortar donde tú lo indiques
+                before: ['#pagina2', '#pagina3'],
+
+                // EVITA hojas vacías
+                avoid: ['.signature-section']
             }
         };
 
-        html2pdf().set(opt).from(element).save().then(() => {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        });
+       html2pdf()
+            .set(opt)
+            .from(element)
+            .save()
+            .then(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
 
     }, 150);
 }
