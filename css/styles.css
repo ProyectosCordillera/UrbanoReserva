@@ -12,10 +12,7 @@ body {
     margin-left: -15px;
     padding-left: 0;
 }
-#Hoja1,
-#Hoja1 * {
-    text-align: justify !important;
-}
+
 /* Este es el contenedor principal */
 #Hoja1.container {
     width: 210mm;
@@ -35,22 +32,7 @@ body {
   
 }
 
-.signature-section {
-    display: flex;
-    justify-content: center;   /* centra horizontalmente */
-    gap: 120px;                /* espacio entre firmas */
-    margin-top: 60px;
-    text-align: center;
-}
 
-.signature-area {
-    width: 250px;
-}
-
-.signature-line {
-    border-top: 2px solid black;
-    margin-bottom: 10px;
-}
 
 /* ------------------ Dropdowns personalizados ------------------ */
 .dropdown-custom-Incluye,
