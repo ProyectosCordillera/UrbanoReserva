@@ -38,11 +38,11 @@ function saveAsPDF(event) {
                 format: 'a4',
                 orientation: 'portrait'
             },
-          pagebreak: {
-                mode: ['avoid-all', 'css'],
-                before: ['#pagina2', '#pagina3'],
-                avoid: ['.signature-section']
+            pagebreak: {
+                mode: ['css'],
+                before: '#pagina2, #pagina3'
             }
+        
         };
 
         html2pdf()
