@@ -34,59 +34,36 @@ function quitarEstiloPDF() {
 
 function saveAsPDF(event) {
     const btn = event.target;
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<span>⏳</span> Generando PDF...';
+    btn.innerHTML = '⏳ Generando PDF...';
     btn.disabled = true;
 
     const element = document.getElementById('Hoja1');
-
-    // 🔹 Aplicar estilo temporal para PDF
     element.style.width = '210mm';
-    element.style.minHeight = '297mm';
     element.style.padding = '15mm';
     element.style.background = 'white';
+    element.style.margin = '0 auto';
     element.style.boxSizing = 'border-box';
-    element.style.margin = '0 auto';   // centrado
 
-    // 🔹 Esperar un momento para que renderice todo
     setTimeout(() => {
-        const opt = {
-            margin: 0,
-            filename: 'recibo-reserva.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, logging: false, letterRendering: true, scrollY: 0 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['css'], before: '#pagina2, #pagina3' }
-        };
+        if (!html2pdf) {
+            alert('html2pdf.js no cargó correctamente.');
+            btn.innerHTML = '💾 PDF';
+            btn.disabled = false;
+            return;
+        }
 
         html2pdf()
-            .set(opt)
+            .set({ margin:0, filename:'recibo.pdf', image:{type:'jpeg', quality:0.98}, html2canvas:{scale:2, useCORS:true, scrollY:0}, jsPDF:{unit:'mm', format:'a4', orientation:'portrait'} })
             .from(element)
             .save()
-            .then(() => {
-                // Limpiar estilos temporales
+            .finally(() => {
                 element.style.width = '';
-                element.style.minHeight = '';
                 element.style.padding = '';
                 element.style.background = '';
-                element.style.boxSizing = '';
                 element.style.margin = '';
-
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            })
-            .catch(error => {
-                element.style.width = '';
-                element.style.minHeight = '';
-                element.style.padding = '';
-                element.style.background = '';
                 element.style.boxSizing = '';
-                element.style.margin = '';
-
-                console.error('Error al generar PDF:', error);
-                alert('Ocurrió un error al generar el PDF:\n' + error.message);
-                btn.innerHTML = originalText;
+                btn.innerHTML = '💾 PDF';
                 btn.disabled = false;
             });
-    }, 700); // ⏱ 700ms para asegurar render
+    }, 800);
 }
