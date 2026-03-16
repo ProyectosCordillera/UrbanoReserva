@@ -223,7 +223,7 @@ body {
 
 .date-input {
     font-size: 12pt; /* Cambiado a 12pt */
-    width: 90px;
+    width: 100px;
     border: none;
     border-bottom: 1px solid #000;
     background-color: transparent;
