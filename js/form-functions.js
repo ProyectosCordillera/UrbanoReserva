@@ -29,7 +29,7 @@ function initCasaDropdown() {
     if (primeraOpcion) ddl.appendChild(primeraOpcion);
     
     // Agregar casas del 1 al 65 con formato FF-XX
-    for (let i = 1; i <= 65; i++) {
+    for (let i = 1; i <= 99; i++) {
         const num = i.toString().padStart(2, '0');
         ddl.innerHTML += `<option value="FF-${num}">FF-${num}</option>`;
     }
