@@ -171,7 +171,7 @@ function setupCasaChangeHandler() {
             txtlote.value = "110 m²";
         } else if (numeroFinca >= 48 && numeroFinca <= 64) {
             txtlote.value = "110 m²";
-        } else if (numeroFinca === 65) {
+        } else if (numeroFinca === 99) {
             txtlote.value = "150 m²";
         } else {
             txtlote.value = "";
